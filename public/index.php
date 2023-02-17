@@ -1,4 +1,7 @@
 <?php
+
+/*Mini MVC framework za moje potrebe*/
+
 session_start();
 
 require "../app/core/init.php";
