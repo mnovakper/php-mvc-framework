@@ -1,6 +1,7 @@
 <?php
 
 /*Mini MVC framework za moje potrebe*/
+/*Mini MVC framework*/
 
 session_start();
 
