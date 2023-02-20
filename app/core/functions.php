@@ -18,3 +18,12 @@ function redirect($path)
     header("Location: " . ROOT."/".$path);
     die();
 }
+
+//used for retaining values in forms after unsuccessful submit
+function old_value($key, $default = '')
+{
+    if(!empty($_POST[$key]))
+        return $_POST[$key];
+
+    return $default;
+}
