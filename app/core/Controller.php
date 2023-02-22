@@ -2,7 +2,7 @@
 
 trait Controller
 {
-    // used for loading views
+    // used for loading views // koristi se za ucitavanje view-a
     public function view($name, $data = [])
     {
         if (!empty($data))

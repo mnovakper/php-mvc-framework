@@ -3,11 +3,12 @@
 class User
 {
     use Model;
-    protected $table = 'users';
+    protected $table = 'users'; // odabrana tablica
 
-    // columns allowed to be editable
+    // columns allowed to be editable // editable stupci
     protected $allowedColumns = ['email', 'password'];
 
+    // provjera input podataka
     public function validate($data)
     {
         $this->errors = [];

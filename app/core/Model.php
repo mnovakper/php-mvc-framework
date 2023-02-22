@@ -4,21 +4,21 @@ trait Model
 {
     use Database;
 
-    // limit & offset for pagination
+    // limit & offset for pagination // opcije i ostalo
     public $limit = 10;
     public $offset = 0;
     public $order_type = "desc"; // or asc
     public $order_column = "id";
     public $errors = [];
 
-    public function findAll() // dumps everything from table
+    public function findAll() // dumps everything from table // baca sve iz tablice
     {
         $query = " SELECT * FROM $this->table order by $this->order_column $this->order_type limit  $this->limit offset $this->offset";
 
         return $this->query($query);
     }
 
-    public function where($data, $data_not = []) // returns multiple rows, $data_not param is for what we're not looking for (optional)
+    public function where($data, $data_not = []) // returns multiple rows, $data_not param is for what we're not looking for (optional) // vraća više redaka, $data_not param je za ono što ne tražimo (izborno)
     {
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
@@ -39,7 +39,7 @@ trait Model
         return $this->query($query, $data);
     }
 
-    public function first($data, $data_not = []) //returns one row
+    public function first($data, $data_not = []) //returns one row // vraća jedan red
     {
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
@@ -64,9 +64,10 @@ trait Model
         return false;
     }
 
+    // umetanje u tablicu
     public function insert($data)
     {
-        // unwanted data removal
+        // unwanted data removal // stupi koje ne želimo
         if(!empty($this->allowedColumns))
         {
             foreach ($data as $key => $value){
@@ -84,9 +85,10 @@ trait Model
         return false;
     }
 
+    // promjena podataka u tablici
     public function update($id, $data, $id_column = 'id')
     {
-        // unwanted data removal
+        // unwanted data removal // stupi koje ne želimo
         if(!empty($this->allowedColumns))
         {
             foreach ($data as $key => $value){
@@ -112,6 +114,7 @@ trait Model
         return false;
     }
 
+    // brisanje iz tablice
     public function delete($id, $id_column = 'id') // $id_column = 'id' used if our column is not named id
     {
         $data[$id_column] = $id;

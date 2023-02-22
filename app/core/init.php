@@ -1,5 +1,5 @@
 <?php
-// will load all the files within "core" folder + autoloader
+// will load all the files within "core" folder + autoloader // ucitava sve datoteke unutar mape "core" + autoloader
 
 spl_autoload_register(function ($className){
     require $filename = "../app/models/" . ucfirst($className) . ".php";
