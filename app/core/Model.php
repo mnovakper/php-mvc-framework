@@ -4,28 +4,30 @@ trait Model
 {
     use Database;
 
-    // limit & offset for pagination // opcije i ostalo
+    // opcije i ostalo (limit i offset za paginaciju)
     public $limit = 10;
     public $offset = 0;
-    public $order_type = "desc"; // or asc
+    public $order_type = "desc"; // ili asc
     public $order_column = "id";
     public $errors = [];
 
-    public function findAll() // dumps everything from table // baca sve iz tablice
+    // baca sve iz tablice
+    public function findAll() 
     {
         $query = " SELECT * FROM $this->table order by $this->order_column $this->order_type limit  $this->limit offset $this->offset";
 
         return $this->query($query);
     }
 
-    public function where($data, $data_not = []) // returns multiple rows, $data_not param is for what we're not looking for (optional) // vraća više redaka, $data_not param je za ono što ne tražimo (izborno)
+    // vraća više redaka, $data_not param je za ono što ne tražimo (izborno)
+    public function where($data, $data_not = []) 
     {
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
         $query = "SELECT * FROM $this->table WHERE ";
 
         foreach ($keys as $key){
-            $query .= $key . " = :" . $key . " && "; // :id tells PDO this is a variable, and we'll provide data later
+            $query .= $key . " = :" . $key . " && ";
         }
 
         foreach ($keys_not as $key){
@@ -39,14 +41,15 @@ trait Model
         return $this->query($query, $data);
     }
 
-    public function first($data, $data_not = []) //returns one row // vraća jedan red
+    // vraća jedan red
+    public function first($data, $data_not = [])
     {
         $keys = array_keys($data);
         $keys_not = array_keys($data_not);
         $query = "SELECT * FROM $this->table WHERE ";
 
         foreach ($keys as $key){
-            $query .= $key . " = :" . $key . " && "; // :id tells PDO this is a variable, and we'll provide data later
+            $query .= $key . " = :" . $key . " && ";
         }
 
         foreach ($keys_not as $key){
@@ -67,7 +70,7 @@ trait Model
     // umetanje u tablicu
     public function insert($data)
     {
-        // unwanted data removal // stupi koje ne želimo
+        // stupci koje ne želimo
         if(!empty($this->allowedColumns))
         {
             foreach ($data as $key => $value){
@@ -88,7 +91,7 @@ trait Model
     // promjena podataka u tablici
     public function update($id, $data, $id_column = 'id')
     {
-        // unwanted data removal // stupi koje ne želimo
+        // stupci koje ne želimo
         if(!empty($this->allowedColumns))
         {
             foreach ($data as $key => $value){
@@ -115,7 +118,7 @@ trait Model
     }
 
     // brisanje iz tablice
-    public function delete($id, $id_column = 'id') // $id_column = 'id' used if our column is not named id
+    public function delete($id, $id_column = 'id') // $id_column = 'id' se koristi ako naš stupac nije nazvan id
     {
         $data[$id_column] = $id;
         $query = "DELETE FROM $this->table WHERE $id_column = :$id_column";

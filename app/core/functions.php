@@ -8,7 +8,7 @@ function show($stuff)
     echo "</pre>";
 }
 
-// for security purposes (inputs) - XSS
+// zastita XSS
 function esc($str)
 {
     return htmlspecialchars($str);
@@ -21,7 +21,7 @@ function redirect($path)
     die();
 }
 
-//used for retaining values in forms after unsuccessful submit // koristi se za zadrzavanje vrijednosti u obrascima nakon neuspjesnog slanja
+// koristi se za zadrzavanje vrijednosti u obrascima nakon neuspjesnog slanja
 function old_value($key, $default = '')
 {
     if(!empty($_POST[$key]))

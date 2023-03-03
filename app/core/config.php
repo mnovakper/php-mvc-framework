@@ -1,4 +1,4 @@
-<?php /** @noinspection SpellCheckingInspection */
+<?php
 
 if ($_SERVER['SERVER_NAME'] == 'localhost')
 {
@@ -9,7 +9,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost')
     define('DBPASS', '');
     define('DBDRIVER', '');
 
-    // constant for absolute path for files (local) // konstanta za apsolutni put za datoteke (local)
+    // konstanta za apsolutni put za datoteke (local)
     define('ROOT', 'http://localhost/PROJECTS/php-mvc-framework/public');
 } else {
     // database config (deployed)
@@ -19,10 +19,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost')
     define('DBPASS', '');
     define('DBDRIVER', '');
 
-    // constant for absolute path for files (deployed) // konstanta za apsolutni put za datoteke (deployed)
+    // konstanta za apsolutni put za datoteke (deployed)
     define('ROOT', 'https://www.tvojnekaawebstranica.com');
 }
 
 define('APP_NAME', "Website Name");
 define('APP_DESC', "Greatest Website In The Universe");
-define('DEBUG', true); // true shows errors, false doesn't // true pokazuje pogreške, false ne
+define('DEBUG', true); // true pokazuje pogreške, false ne
