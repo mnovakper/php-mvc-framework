@@ -5,7 +5,7 @@ class User
     use Model;
     protected $table = 'users'; // odabrana tablica
 
-    // columns allowed to be editable // editable stupci
+    // stupci koji se smiju mijenjati
     protected $allowedColumns = ['email', 'password'];
 
     // provjera input podataka
