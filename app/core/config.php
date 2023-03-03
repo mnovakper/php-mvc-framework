@@ -10,7 +10,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost')
     define('DBDRIVER', '');
 
     // constant for absolute path for files (local) // konstanta za apsolutni put za datoteke (local)
-    define('ROOT', 'http://localhost/TUTORIALS/php-mvc-framework/public');
+    define('ROOT', 'http://localhost/PROJECTS/php-mvc-framework/public');
 } else {
     // database config (deployed)
     define('DBNAME', 'my_db');

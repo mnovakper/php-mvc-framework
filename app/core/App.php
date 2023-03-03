@@ -5,10 +5,10 @@ class App
     private $controller = 'Home'; // zadano ime controller fajla
     private $method = 'index'; // zadano ime metode (metode u controller fajlu)
 
-    // separate url into strings, so we can figure out destination // razdvajanje url-a
+    // razdvajanje url-a
     private function splitURL()
     {
-        $URL = $_GET['url'] ?? 'home'; // if it doesn't exist, make it home // ako ne postoji - home
+        $URL = $_GET['url'] ?? 'home'; // ako ne postoji - home
         $URL = explode("/", trim($URL,"/"));
         return $URL;
     }
